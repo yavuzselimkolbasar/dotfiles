@@ -8,7 +8,6 @@ I'm new to NixOS and I'm sharing my personal configuration files for my desktop 
 - KDE Plasma setup  
 - Virtualization tools (QEMU, libvirt, Looking Glass)
 - GPU passtrough
-- Secure Boot support with Lanzaboote  
 
 ## Notes
 

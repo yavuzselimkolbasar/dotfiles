@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-sudo cp -r /etc/nixos/hardware-configuration.nix ~/dotfiles/xfce
-sudo cp -r /etc/nixos/configuration.nix ~/dotfiles/xfce
-sudo rm -rf /etc/nixos/hardware-configuration.nix
-sudo rm -rf /etc/nixos/configuration.nix
+sudo mv -r /etc/nixos/hardware-configuration.nix ~/dotfiles/xfce/
+sudo mv -r /etc/nixos/configuration.nix ~/dotfiles/xfce/
 
 sudo cat ~/dotfiles/xfce/hardware-configuration.nix | sudo tee -a ~/dotfiles/xfce/hardware-configuration (1).nix
 

@@ -54,7 +54,6 @@
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
 
-  # Kernel parameters for Intel GPU and power management
   boot.kernelParams = [
     "mem_sleep_default=deep"  
     "i915.enable_guc=2"

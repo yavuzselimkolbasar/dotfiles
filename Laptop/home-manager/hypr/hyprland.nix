@@ -99,6 +99,12 @@
         dim_special = 0.07;
       };
 
+      dwindle = {
+        smart_split = true;  # This gives more control over split direction
+        smart_resizing = true;
+        default_split_ratio = 1.0;  # Even 50/50 splits
+      };    
+
       xwayland = {
         force_zero_scaling = true;
       };

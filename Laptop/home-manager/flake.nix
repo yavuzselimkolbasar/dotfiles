@@ -1,9 +1,7 @@
 {
   inputs = {
-    # Base packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,12 +25,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, dankMaterialShell , ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, dankMaterialShell, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations."yavuz" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."$user" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [

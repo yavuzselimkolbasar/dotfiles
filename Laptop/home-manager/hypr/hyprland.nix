@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.username = "yavuz";
-  home.homeDirectory = "/home/yavuz";
+  home.username = "$user";
+  home.homeDirectory = "/home/$user";
 
   programs.home-manager.enable = true;
 
@@ -12,11 +12,14 @@
     systemd.enable = true;
     settings = {
       monitor = [
-        ",preferred,auto,1.25"
+        ",preferred,auto, 1"
       ];
       env = [
        "QT_QPA_PLATFORMTHEME=gtk3"
+       "QT_QPA_PLATFORMTHEME=qr6ct"
+       "HYPRSHOT_DIR,/home/$user/Pictures/Screenshots"
       ];
+
       #Gestures
       gesture = [
         "3, swipe, move,"
@@ -61,6 +64,7 @@
         force_split = 2;
         split_width_multiplier = 1.0;
       };
+      
       #Decoration
       decoration = {
         rounding = 18;
@@ -118,8 +122,8 @@
           "border, 1, 10, emphasizedDecel"
           "layersIn, 1, 2.7, emphasizedDecel, popin 93%"
           "layersOut, 1, 2.4, menu_accel, popin 94%"
-          "fadeLayersIn, 1, 0.5, menu_decel"
-          "fadeLayersOut, 1, 2.7, menu_accel"
+          "fadeLayersIn, 1, 2.7, menu_decel"
+          "fadeLayersOut, 1, 1.0, menu_accel"
           "workspaces, 1, 7, menu_decel, slide"
           "specialWorkspaceIn, 1, 2.8, emphasizedDecel, slidevert"
           "specialWorkspaceOut, 1, 1.2, emphasizedAccel, slidevert"
@@ -136,7 +140,7 @@
         off_window_axis_events = 2;
 
         touchpad = {
-          natural_scroll = true;
+          natural_scroll = false;
           disable_while_typing = true;
           clickfinger_behavior = false;
           scroll_factor = 0.5;

@@ -1,12 +1,13 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.username = "yavuz";
-  home.homeDirectory = "/home/yavuz";
-
+  home.username = "$user";
+  home.homeDirectory = "/home/$user";
   programs.home-manager.enable = true;
 
-  # Dank Material Shell
+    xdg.configFile."gtk-3.0/settings.ini".force = true;
+  xdg.configFile."gtk-4.0/settings.ini".force = true;
+
   programs.dankMaterialShell = {
     enable = true;
     enableDynamicTheming = false;
@@ -20,7 +21,6 @@
     enableSystemSound = true;
   };
 
-  # Pointer Cursor
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -29,7 +29,6 @@
     size = 24;
   };
 
-  # GTK Configuration
   gtk = {
     enable = true;
     theme = {
@@ -48,7 +47,6 @@
     };
   };
 
-  # Qt Configuration
   qt = {
     enable = true;
     platformTheme.name = "qt5ct";
@@ -58,7 +56,6 @@
     };
   };
 
-  # Dconf (GNOME/GTK settings)
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -75,7 +72,6 @@
     };
   };
 
-  # Environment Variables
   home.sessionVariables = {
     GTK_THEME = "WhiteSur-Dark";
     GTK2_RC_FILES = "${config.home.homeDirectory}/.gtkrc-2.0";
@@ -89,7 +85,6 @@
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
   };
 
-  # Installed Packages
   home.packages = with pkgs; [
     whitesur-gtk-theme
     whitesur-icon-theme
@@ -102,7 +97,6 @@
     glib
   ];
 
-  # GTK2 Compatibility
   gtk.gtk2.configLocation = "${config.home.homeDirectory}/.gtkrc-2.0";
   gtk.gtk2.extraConfig = ''
     gtk-theme-name="WhiteSur-Dark"
@@ -113,12 +107,11 @@
     gtk-application-prefer-dark-theme=1
   '';
 
-  # XDG Configuration
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
   };
-
+  
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

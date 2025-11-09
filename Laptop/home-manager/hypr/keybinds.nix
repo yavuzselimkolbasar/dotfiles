@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.username = "yavuz";
-  home.homeDirectory = "/home/yavuz";
+  home.username = "$user";
+  home.homeDirectory = "/home/$user";
 
   programs.home-manager.enable = true;
 
@@ -15,7 +15,7 @@
       "$mainMod" = "SUPER";
       "$mod" = "ALT"; 
       "$clipboard" = "dms ipc call clipboard toggle";
-
+      
     #Keybindings
       bind = [
 
@@ -27,7 +27,11 @@
         "$mod, Q, exec, $menu"
         "$mainMod, B, exec, firefox"
         "$mainMod, D, exec, vesktop"
-
+        "$mainMod_SHIFT, S, exec, hyprshot -m region"
+        ",PRINT, exec, hyprshot -m region"
+        "$mainMod, F, fullscreen"
+        "$mainMod_SHIFT, V, togglefloating"
+        "$mainMod, L, exec, dms ipc call lock lock"
         #Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -49,8 +53,9 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+        ",XF86PowerOff, exec, dms ipc call powermenu toggle"
       ];
-
+      
       #Mouse
       bindm = [
         "$mainMod, mouse:272, movewindow"

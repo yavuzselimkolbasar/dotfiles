@@ -1,6 +1,4 @@
 {
-  description = "Home Manager setup with Noctalia Shell";
-
   inputs = {
     # Base packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -11,31 +9,39 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Noctalia Shell dependencies
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
+    dgop = {
+      url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+    dms-cli = {
+      url = "github:AvengeMedia/danklinux";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell"; # match versions
+    };
+
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
+      inputs.dms-cli.follows = "dms-cli";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, noctalia, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, dankMaterialShell , ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations."$user" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."yavuz" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [
           ./home.nix
-          ./hypr.nix
-          inputs.noctalia.homeModules.default
+          ./hypr/hyprland.nix
+          ./hypr/keybinds.nix
+          ./hypr/dependincies.nix
+          ./hypr/execs.nix
+          inputs.dankMaterialShell.homeModules.dankMaterialShell.default           
         ];
 
         extraSpecialArgs = { inherit inputs; };

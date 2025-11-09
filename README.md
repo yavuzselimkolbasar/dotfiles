@@ -1,4 +1,4 @@
-# My NixOS Configs
+# My NixOS/Hyprland Configs
 
 I'm new to NixOS and I'm sharing my personal configuration files for my desktop and laptop setups.  
 
@@ -8,6 +8,7 @@ I'm new to NixOS and I'm sharing my personal configuration files for my desktop 
 - KDE Plasma setup  
 - Virtualization tools (QEMU, libvirt, Looking Glass)
 - GPU passtrough
+- Cool looking Hyprland config with the Dank Linux Shell
 
 ## Notes
 
@@ -32,7 +33,7 @@ This gives me a fast, minimal, and visually appealing Wayland environment tailor
 
 ## Future Plans
 
-- I might create and share my own Hyprland setup in the future.  
+Improve the experience
 
 Feel free to look around, adapt, or suggest improvements.  
 

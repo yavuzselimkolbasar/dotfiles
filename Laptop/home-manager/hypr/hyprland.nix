@@ -12,7 +12,7 @@
     systemd.enable = true;
     settings = {
       monitor = [
-        ",preferred,auto, 1"
+        ",preferred,auto, 1.25"
       ];
       env = [
        "QT_QPA_PLATFORMTHEME=gtk3"
@@ -64,7 +64,7 @@
         force_split = 2;
         split_width_multiplier = 1.0;
       };
-      
+
       #Decoration
       decoration = {
         rounding = 18;
@@ -99,6 +99,9 @@
         dim_special = 0.07;
       };
 
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
       #Animations
       animations = {

@@ -15,6 +15,7 @@
     settings = {
         exec-once = [
          "export DMS_DISABLE_MATUGEN=1 && dms run"
+         "vesktop -m --start-minimazed-to-tray"
        ];
     };
   };

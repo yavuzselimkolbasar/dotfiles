@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   home.username = "$user";
@@ -22,6 +22,10 @@
     steam
     libgnome-keyring
     spotify
+    arduino-ide
+    python310
+    inputs.hyprsession.packages.${pkgs.system}.hyprsession
+    swaybg
  ];   
 
 
@@ -33,6 +37,15 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland xdg-desktop-portal-gtk ];
   };
 
+  programs.vscode = {
+   enable = true;
+   package = pkgs.vscodium;
+   profiles.default.extensions = with pkgs.vscode-extensions; [
+    dracula-theme.theme-dracula
+    vscodevim.vim
+    yzhang.markdown-all-in-one
+   ];
+  };
 
   programs.kitty = {
     enable = true;
@@ -47,7 +60,7 @@
       cursor_trail = 1;
       window_margin_width = "21.75";
       confirm_os_window_close = 0;
-      background_opacity = 0.2;  # 0.0 is fully transparent, 1.0 is fully opaque
+      background_opacity = 0.2;
     };
     
     keybindings = {

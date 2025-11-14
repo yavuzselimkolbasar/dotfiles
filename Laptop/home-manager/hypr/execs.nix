@@ -16,6 +16,9 @@
         exec-once = [
          "export DMS_DISABLE_MATUGEN=1 && dms run"
          "vesktop -m --start-minimazed-to-tray"
+         "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+         "hyprsession"
+         "swaybg -i /home/yavuz/Pictures/Wallpapers/b-360.jpg"
        ];
     };
   };

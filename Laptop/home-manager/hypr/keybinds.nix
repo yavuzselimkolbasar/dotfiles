@@ -54,6 +54,7 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
         ",XF86PowerOff, exec, dms ipc call powermenu toggle"
+        "$mainMod, togglespecialworkspace, magic"
       ];
       
       #Mouse

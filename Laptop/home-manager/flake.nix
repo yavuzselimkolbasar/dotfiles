@@ -23,9 +23,13 @@
       inputs.dgop.follows = "dgop";
       inputs.dms-cli.follows = "dms-cli";
     };
+    hyprsession = {
+      url = "github:joshurtree/hyprsession";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, dankMaterialShell, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, dankMaterialShell, hyprsession, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
